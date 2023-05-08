@@ -1,12 +1,12 @@
 # Helios-Core
 
-A library containing core mechanisms for Helios Launcher
+A library containing core mechanisms for Gaia Launcher
 
 ### Requirements
 
 * Node.js 18 (minimum)
 
-helios-core will always use the same minimum node version as Helios Launcher.
+gaialauncher-core will always use the same minimum node version as Gaia Launcher.
 
 ## Auth
 
