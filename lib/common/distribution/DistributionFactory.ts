@@ -51,14 +51,14 @@ export class HeliosDistribution {
         return this.servers.find(s => s.rawServer.id === id) || null
     }
 
-    public getServersFromCode(code: string): HeliosServer | null {
+    public getServersFromCode(code: string): Array<HeliosServer> | null {
         let servs = []
         for(let serv of this.servers) {
             if(serv.rawServer.serverCode === code) {
                 servs.push(serv)
             }
         }
-        return servs.length > 0 ? servs[0] : null
+        return servs.length > 0 ? servs : null
     }
 
 }
