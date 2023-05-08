@@ -86,12 +86,13 @@ export class HeliosServer {
     }
 
     private resolveInstanceInterface(): { icon: string | null, logo: string | null, background: string | null, newsTag: string | null, wiki: string | null } {
+        const wikiUrl = this.rawServer.launcherPage?.wiki ? this.rawServer.launcherPage.wikiUrl : null
         return {
             icon: this.rawServer.launcherPage?.icon ?? null,
             logo: this.rawServer.launcherPage?.logo ?? null,
             background: this.rawServer.launcherPage?.background ?? null,
             newsTag: this.rawServer.launcherPage?.newsTag ?? null,
-            wiki: this.rawServer.launcherPage?.wiki ? this.rawServer.launcherPage.wikiUrl : null
+            wiki: wikiUrl ? wikiUrl : null
         }
     }
 
