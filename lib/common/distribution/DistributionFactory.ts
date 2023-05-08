@@ -66,6 +66,7 @@ export class HeliosDistribution {
 export class HeliosServer {
 
     public readonly modules: HeliosModule[]
+    public readonly launcherPage: { icon: string | null, logo: string | null, background: string | null, newsTag: string | null, wiki: string | null }
     public readonly hostname: string
     public readonly port: number
     public readonly effectiveJavaOptions: Required<JavaVersionProps>
@@ -76,10 +77,22 @@ export class HeliosServer {
         instanceDir: string
     ) {
         const { hostname, port } = this.parseAddress()
+        const { icon, logo, background, newsTag, wiki } = this.resolveInstanceInterface()
+        this.launcherPage = { icon, logo, background, newsTag, wiki }
         this.hostname = hostname
         this.port = port
         this.effectiveJavaOptions = this.parseEffectiveJavaOptions()
         this.modules = rawServer.modules.map(m => new HeliosModule(m, rawServer.id, commonDir, instanceDir))
+    }
+
+    private resolveInstanceInterface(): { icon: string | null, logo: string | null, background: string | null, newsTag: string | null, wiki: string | null } {
+        return {
+            icon: this.rawServer.launcherPage?.icon ?? null,
+            logo: this.rawServer.launcherPage?.logo ?? null,
+            background: this.rawServer.launcherPage?.background ?? null,
+            newsTag: this.rawServer.launcherPage?.newsTag ?? null,
+            wiki: this.rawServer.launcherPage?.wiki ? this.rawServer.launcherPage.wikiUrl : null
+        }
     }
 
     private parseAddress(): { hostname: string, port: number } {
