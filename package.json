@@ -1,6 +1,6 @@
 {
   "name": "gaialauncher-core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library containing core mechanisms for Gaia Launcher",
   "main": "dist/index.js",
   "scripts": {
